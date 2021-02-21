@@ -1,5 +1,7 @@
-{
-  "expo": {
+import {ExpoConfig, ConfigContext} from '@expo/config'
+
+export default ({config}:ConfigContext):ExpoConfig=>{
+  return({
     "name": "proje",
     "slug": "proje",
     "version": "1.0.0",
@@ -30,5 +32,5 @@
     "web": {
       "favicon": "./assets/images/favicon.png"
     }
-  }
+  })
 }
