@@ -1,84 +1,53 @@
-import * as React from 'react';
-import { StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
+import  React,{useState} from 'react';
+import { StyleSheet, TextInput, TouchableOpacity,Alert, Modal } from 'react-native';
 import { Text, View } from '../components/Themed';
 
-export default function TabTwoScreen() {
- 
-  const [ad, setAd] = React.useState()
-  const [soyad, setSoyad] = React.useState()
-  const [email, setEmail] = React.useState()
-  const [sifre, setSifre] = React.useState()
-  const [numara, setNumara] = React.useState()
-  const login = () => {
-    <Text>Kullanıcı bilgileri</Text>
-    alert(ad)
-    alert(soyad)
-    alert(email)
-    alert(sifre)
-    alert(numara)
-  
-  }
-
-  return (
-    <View style={styles.assss}>
-      <View style={styles.asd}>
-        <Text style={{fontSize: 15, marginLeft:70,marginTop: 5 }}>AD</Text>
-        <Text style={{fontSize: 15,marginLeft:170 ,marginTop: 5 }}>SOYAD</Text>
-      </View>
-      <View style={styles.abc}>
-        <TextInput value={ad} onChangeText={(text) => setAd(text)} style={{marginBottom:-5, color: '#3f734d',backgroundColor: 'white', fontSize: 20, borderWidth: 1, width: '45%', padding: 3, marginLeft:10 }} />
-        <TextInput  value={soyad} onChangeText={(text) => setSoyad(text)} style={{marginBottom:-5, color: '#3f734d',backgroundColor: 'white', fontSize: 20, borderWidth: 1, width: '45%', padding: 3 ,marginLeft:20 }} />
-      </View>
-      <View style={styles.asd}>
-        <Text style={{fontSize: 15, marginLeft: 160 ,marginBottom: -5}}>EMAİL</Text>
-      </View> 
-      <View style={styles.abc}>
-        <TextInput value={email} onChangeText={(text) => setEmail(text)} keyboardType="email-address" style={{ marginBottom:-5, color: '#3f734d', backgroundColor: 'white',fontSize: 20, borderWidth: 1, width: '95%', padding: 3, marginLeft:10 }} />
-      </View>
-      <View style={styles.asd}>
-        <Text style={{fontSize: 15, marginLeft:160}}>SİFRE</Text>
-      </View>
-      <View style={styles.abc}>
-        <TextInput value={sifre} onChangeText={(text) => setSifre(text)} secureTextEntry={true}  style={{ backgroundColor: 'white',marginBottom:-5, color: '#3f734d', fontSize: 20, borderWidth: 1, width: '70%', padding: 3, marginLeft:55}}/>
-      </View>
-      <View style={styles.asd}>
-        <Text style={{fontSize: 15, marginLeft: 150 }}>NUMARA</Text>
-      </View>
-      <View style={styles.abc}>
-        <TextInput value={numara} onChangeText={(text) => setNumara(text)} keyboardType='numeric' style={{marginBottom: 5,backgroundColor: 'white', color: '#3f734d', fontSize: 20, borderWidth: 1, width: '70%', padding: 3, marginLeft:55 }}/>
-      </View>
-      <View style={styles.giris}>
-        <TouchableOpacity onPress={() => login()}  style={{ marginTop: 5, borderRadius: 10, backgroundColor: 'blue', height: 40, justifyContent: 'center', alignItems: 'center', width: '90%' ,marginLeft:20}}>
-          <Text>Giris</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  abc: {
-    flexDirection: 'row',
-    paddingHorizontal: 1,
-    paddingVertical: 5,
-    backgroundColor: 'red'
-    
-  },
-  asd: {
+export default function TabTwoScreen(props) {
    
-    flexDirection: 'row',
-    paddingHorizontal: 10,
-    paddingVertical: 7,
-    backgroundColor: 'red'
-  },
-  giris: {
-    backgroundColor: 'red'
-  },
-  assss: {
-    backgroundColor: 'red',
-    flex: 1
+  const [name, setName] = useState("")
+  const [url, setUrl] = useState() 
+  const [visible, setVisible] = useState(false)
+
+  const goToProfilescreen = ()=>{
+    setVisible(false)
+    props.navigation.navigate('PostSc',{name:name,url:url})
+
   }
-  
+
+  const login = () => {
+    setVisible(true)
+  }
+
+ return(
+   <View>
+    <View style={styles.urll}>
+      <Text style={{fontSize: 15,marginTop: 5,borderWidth: 1  }}>IMAGE URL</Text>
+     <TextInput value={url} onChangeText={(text) => setUrl(text)} style={{ color: '#3f734d',backgroundColor: 'white', fontSize: 20, borderWidth: 1, width: '70%', padding: 3, marginLeft:20}} />
+    </View>
+    <View >
+      <TouchableOpacity onPress={() => setVisible(true)}  style={{ marginTop: 20, borderRadius: 10, backgroundColor: 'blue', height: 40, justifyContent: 'center', alignItems: 'center', width: '70%' ,marginLeft:60}}>
+        <Text>User Information</Text>
+      </TouchableOpacity>
+    </View>
+    <Modal visible={visible}>
+      <View style={{flex: 1, backgroundColor:'red', alignItems:'center',justifyContent:'center'}}>
+        <Text>asddas</Text>
+        <TextInput value={name} onChangeText={(text) => setName(text)} style={{ color: '#3f734d',backgroundColor: 'white', fontSize: 20, borderWidth: 1, width: '70%', padding: 3, marginLeft:20}} />
+        <TouchableOpacity onPress={() => goToProfilescreen()}  style={{ marginTop: 20, borderRadius: 10, backgroundColor: 'blue', height: 40, justifyContent: 'center', alignItems: 'center', width: '70%' ,marginLeft:60}}>
+        <Text>go to profile</Text>
+      </TouchableOpacity>
+      </View>
+    </Modal>
+   </View>
+ )
+}
+const styles = StyleSheet.create({
+  urll: {
+    flexDirection: 'row',
+    paddingHorizontal:5,
+    paddingVertical: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  }
 });

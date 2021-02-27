@@ -5,6 +5,8 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import PostScreen from '../screens/PostScreen';
+import ProfileScreen from '../screens/PostScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
@@ -49,11 +51,8 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
-      />
+      <TabOneStack.Screen name="TabOneScreen" component={TabOneScreen} options={{ headerTitle: 'Tab One Title' }} />
+      <TabOneStack.Screen name="PostSc" component={PostScreen} options={{ headerTitle: 'post screen' }} />
     </TabOneStack.Navigator>
   );
 }
@@ -63,11 +62,8 @@ const TabTwoStack = createStackNavigator<TabTwoParamList>();
 function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
-      />
+      <TabTwoStack.Screen name="TabTwoScreen"component={TabTwoScreen} options={{ headerTitle: 'Tab Two Title'}} />
+      <TabTwoStack.Screen name="Prfsc"component={ProfileScreen} options={{ headerTitle: 'Profile Screen'}} />
     </TabTwoStack.Navigator>
   );
 }
