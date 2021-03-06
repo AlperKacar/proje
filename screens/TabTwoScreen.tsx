@@ -11,7 +11,7 @@ export default function TabTwoScreen(props) {
 
   const goToProfilescreen = (asdf: string, tttt: string) => {
     setVisible(false)
-    setSecondModalVısıble(true)
+    // setSecondModalVısıble(true)
     props.navigation.navigate('Prfsc', { name: asdf, url: tttt })
   }
 
@@ -43,7 +43,7 @@ export default function TabTwoScreen(props) {
 
       </Modal>
       <Modal visible={secondModalVısıble} onRequestClose={() => setSecondModalVısıble(false)}>
-        <View style={{ backgroundColor: 'red', flex: 1 }}> </View>
+        <View style={{ backgroundColor: 'red', flex: 1 }}></View>
       </Modal>
     </View>
   )
