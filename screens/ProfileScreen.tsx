@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
+import { StyleSheet, Text, View ,Image ,Dimensions} from 'react-native'
 const WIDTH = Dimensions.get('screen').width
 const ProfileScreen = (props) => {
     console.log(props)
@@ -8,8 +8,8 @@ const ProfileScreen = (props) => {
 
     return (
         <View>
-            <Text>{name}</Text>
-            <Image resizeMode={'contain'} style={{ width: WIDTH, height: 300 }} source={{ uri: image }} />
+           <Text>{name}</Text>
+            <Image resizeMode={'contain'} style={{ width:WIDTH, height: 300}} source={{ uri: image }} /> 
         </View>
     )
 }
