@@ -10,7 +10,8 @@ import ProfileScreen from '../screens/PostScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
-
+import UserListScreen from "../screens/UserListScreen";
+import UserDetailScreen from "../screens/UserDetailScreen";
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
@@ -50,9 +51,11 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator>
+    <TabOneStack.Navigator initialRouteName={"UserListScreen"}>
       <TabOneStack.Screen name="TabOneScreen" component={TabOneScreen} options={{ headerTitle: 'Tab One Title' }} />
       <TabOneStack.Screen name="PostSc" component={PostScreen} options={{ headerTitle: 'post screen' }} />
+      <TabOneStack.Screen name="UserListScreen" component={UserListScreen} options={{ headerTitle: 'user list' }} />
+      <TabOneStack.Screen name="UserDetailScreen" component={UserDetailScreen} options={{ headerTitle: 'user detail' }} />
     </TabOneStack.Navigator>
   );
 }

@@ -7,6 +7,7 @@ import { Text, View } from '../components/Themed';
 const WIDTH = Dimensions.get('screen').width
 
 export default function TabOneScreen(props) {
+
 console.log(props)
   React.useEffect(()=>{
     props.navigation.setOptions({headerTitle:'İNSTAGRAM'})

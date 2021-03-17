@@ -9,10 +9,10 @@ export default function TabTwoScreen(props) {
   const [visible, setVisible] = useState(false)
   const [secondModalVısıble, setSecondModalVısıble] = useState(false)
 
-  const goToProfilescreen = (name: string, url: string) => {
+  const goToProfilescreen = (asd: string, url: string) => {
     setVisible(false)
     // setSecondModalVısıble(true)
-    props.navigation.navigate('Prfsc', { name: name, url: url })
+    props.navigation.navigate('Prfsc', { asd: asd, url: url })
   }
 
   const login = () => {
