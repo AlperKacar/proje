@@ -11,7 +11,13 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import UserListScreen from "../screens/UserListScreen";
-import UserDetailScreen from "../screens/UserDetailScreen";
+import UserList from "../screens/UserList";
+import Posts from "../screens/Posts";
+import Albums from "../screens/Albums";
+import comments from "../screens/comments";
+import Photos from "../screens/Photos";
+import Todos from "../screens/Todos";
+import UserList1Screen from "../screens/UserList1Screen";
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
@@ -55,7 +61,13 @@ function TabOneNavigator() {
       <TabOneStack.Screen name="TabOneScreen" component={TabOneScreen} options={{ headerTitle: 'Tab One Title' }} />
       <TabOneStack.Screen name="PostSc" component={PostScreen} options={{ headerTitle: 'post screen' }} />
       <TabOneStack.Screen name="UserListScreen" component={UserListScreen} options={{ headerTitle: 'user list' }} />
-      <TabOneStack.Screen name="UserDetailScreen" component={UserDetailScreen} options={{ headerTitle: 'user detail' }} />
+      <TabOneStack.Screen name="UserList1Screen" component={UserList1Screen} options={{ headerTitle: 'id list' }} />
+      <TabOneStack.Screen name="UserList" component={UserList} options={{ headerTitle: 'user screen' }} />
+      <TabOneStack.Screen name="Posts" component={Posts} options={{ headerTitle: 'posts' }} />
+      <TabOneStack.Screen name="Albums" component={Albums} options={{ headerTitle: 'albums' }} />
+      <TabOneStack.Screen name="Photos" component={Photos} options={{ headerTitle: 'photos' }} />
+      <TabOneStack.Screen name="Todos" component={Todos} options={{ headerTitle: 'todos' }} />
+      <TabOneStack.Screen name="comments" component={comments} options={{ headerTitle: 'comments' }} />
     </TabOneStack.Navigator>
   );
 }

@@ -9,10 +9,10 @@ export default function TabTwoScreen(props) {
   const [visible, setVisible] = useState(false)
   const [secondModalVısıble, setSecondModalVısıble] = useState(false)
 
-  const goToProfilescreen = (asd: string, url: string) => {
+  const goToTabOneScreen = (name: string, url: string) => {
     setVisible(false)
     // setSecondModalVısıble(true)
-    props.navigation.navigate('Prfsc', { asd: asd, url: url })
+    props.navigation.navigate('Prfsc', { name: name, url: url })
   }
 
   const login = () => {
@@ -22,7 +22,7 @@ export default function TabTwoScreen(props) {
   return (
     <View>
       <View >
-        <TouchableOpacity onPress={() => setVisible(true)} style={{ marginTop: 20, borderRadius: 10, backgroundColor: 'blue', height: 40, justifyContent: 'center', alignItems: 'center', width: '70%', marginLeft: 60 }}>
+        <TouchableOpacity onPress={() => setVisible(true)} style={{ marginTop: 20, borderRadius: 10, backgroundColor: 'lightblue', height: 40, justifyContent: 'center', alignItems: 'center', width: '70%', marginLeft: 60 }}>
           <Text>User Information</Text>
         </TouchableOpacity>
       </View>
@@ -30,10 +30,10 @@ export default function TabTwoScreen(props) {
         <View style={{ flex: 1, backgroundColor: '#00000055', alignItems: 'center', justifyContent: 'center' }}>
          
           <View style={{ flexDirection: 'row',  }}>
-            <View style={{ flex: 1,marginHorizontal:20, paddingVertical:10, backgroundColor:'#fff', alignItems:'center' }}>
+            <View style={{ marginTop:150,height:570,flex: 1, borderRadius:10,paddingVertical:10, backgroundColor:'#fff', alignItems:'center' }}>
               <Text style={{ marginBottom: 20, fontSize: 20 }}>NAME</Text>
               <TextInput value={name} onChangeText={(text) => setName(text)} style={{ color: '#3f734d', backgroundColor: 'white', fontSize: 20, borderWidth: 1, width: '70%', padding: 3, marginLeft: 20 }} />
-              <TouchableOpacity onPress={() => goToProfilescreen(name, 'https://picsum.photos/300/300')} style={{ marginTop: 20, borderRadius: 10, backgroundColor: 'blue', height: 40, justifyContent: 'center', alignItems: 'center', width: '70%', marginLeft: 20 }}>
+              <TouchableOpacity onPress={() => props.navigation.navigate('TabOneScreen')} style={{ marginTop: 20, borderRadius: 10, backgroundColor: 'blue', height: 40, justifyContent: 'center', alignItems: 'center', width: '70%', marginLeft: 20 }}>
                 <Text>go to profile</Text>
               </TouchableOpacity>
             </View>

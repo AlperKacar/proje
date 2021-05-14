@@ -75,7 +75,7 @@ MapFunc()
 
                     return (
 
-                        <View key={index} style={{ flexDirection: 'row', marginLeft: 5, marginTop: 10 }}>
+                        <View key={index} style={{ flexDirection: 'row', marginLeft: 5, marginTop: 13,borderBottomColor:'black',borderBottomWidth: 0.2 }}>
                             <View style={{ flex: 1 }} >
                                 {/* <Image /> */}
                                 <Image
@@ -86,9 +86,9 @@ MapFunc()
                             <View style={{ flex: 7, flexDirection: 'row' }} >
                                 <View>
                                     <Text style={{ marginHorizontal: 5, marginBottom: 3, marginTop: 5, fontSize: 18, fontWeight: '600' }}>{item.username}</Text>
-                                    <Text style={{ marginLeft: 5, fontSize: 11 }}>{item.commentTime}</Text></View>
+                                    <Text style={{ marginLeft: 5, fontSize: 11 , marginBottom:5}}>{item.commentTime}</Text></View>
                                 <View>
-                                    <Text style={{ marginTop: 9 }}> {item.comment}</Text>
+                                    <Text style={{ marginTop: 7 }}> {item.comment}</Text>
                                 </View>
                             </View>
 
