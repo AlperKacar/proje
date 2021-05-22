@@ -1,36 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, StyleSheet, Text, View , TouchableOpacity , ScrollView} from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, View, ScrollView } from 'react-native'
 
-const comments = (props: any) => {
-    var userId = props.route.params.userId 
-    const [user1, setUser1] = useState<{ id: number ; name:string ; body:string ; email:string ; postId:number ; }[]>([])
+const Comments = (params: any) => {
+    const postId = params.postId
+    const [post, setpost] = useState<{ id: number; name: string; body: string; email: string; postId: number; }[]>([])
     const [loading, setLoading] = useState(true)
-    
-    React.useEffect(()=>{
-      props.navigation.setOptions({headerTitle:'POST'})
-    },[])
+
     useEffect(() => {
-        getuser1()
+        getpost()
     }, [])
 
 
-    const getuser1 = () => {
+    const getpost = () => {
 
-        fetch("http://jsonplaceholder.typicode.com/comments?postId=" + userId)
+        fetch("http://jsonplaceholder.typicode.com/comments?postId=" + postId)
             .then(response => response.json())
             .then(json => handleResponse1(json))
             .catch(e => console.log(e))
     }
 
     const handleResponse1 = (response: any[]) => {
-        var nameUser1 = response.map((item1, index) => {
+        var namepost = response.map((item, index) => {
             return {
-                id: item1.id, name:item1.name, body:item1.body , postId: item1.postId 
+                id: item.id, name: item.name, body: item.body, postId: item.postId
             }
         })
-        setUser1(response)
-        setTimeout(function(){setLoading(false)},500);
-        console.log(nameUser1);
+        setpost(response)
+        setTimeout(function () { setLoading(false) }, 500);
+        console.log(namepost);
     }
 
 
@@ -38,21 +35,23 @@ const comments = (props: any) => {
         return <ActivityIndicator size={'large'} color={'red'} style={{ marginTop: 30 }} />
 
     return (
-        <ScrollView style={{marginLeft:10}}>
-            {  user1.map((item1, index) => {
-            return (
+        <ScrollView style={{ marginLeft: 10 }}>
+            {  post.map((item, index) => {
+                return (
                     <View style={{ marginBottom: 30 }} key={index}>
-                <Text style={{fontSize:20}}>"postId": {item1.postId}</Text>
-                <Text style={{fontSize:20}}>"id": {item1.id}</Text>
-                <Text style={{fontSize:20}}>"name": {item1.name}</Text>
-                <Text style={{fontSize:20}}>"body": {item1.body}</Text>
-                <Text style={{fontSize:20}}>"email": {item1.email}</Text>
-                </View>)}
-                )}
+                        <Text style={{ fontSize: 20 }}><span style={{color:'red'}}>"postId":</span>{item.postId}</Text>
+                        <Text style={{ fontSize: 20 }}><span style={{color:'red'}}>"id":</span>{item.id}</Text>
+                        <Text style={{ fontSize: 20 }}><span style={{color:'red'}}>"name": </span>{item.name}</Text>
+                        <Text style={{ fontSize: 20 }}><span style={{color:'red'}}>"body": </span>{item.body}</Text>
+                        <Text style={{ fontSize: 20 }}><span style={{color:'red'}}>"email":</span>{item.email}</Text>
+
+                    </View>)
+            }
+            )}
         </ScrollView>
     )
 }
 
-export default comments
+export default Comments
 
 const styles = StyleSheet.create({})

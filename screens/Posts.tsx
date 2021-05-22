@@ -1,5 +1,8 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
+import Postitem from './post/Postitem'
+
 
 const Posts = (props: any) => {
     var userId = props.route.params.userId
@@ -7,50 +10,23 @@ const Posts = (props: any) => {
     const [loading, setLoading] = useState(true)
 
     React.useEffect(() => {
-        props.navigation.setOptions({ headerTitle: 'POST' })
+        props.navigation.setOptions({ headerTitle: 'POSTS' })
     }, [])
     useEffect(() => {
-        getuser()
-
-    }, [])
-
-
-    const getuser = () => {
-
-        fetch("http://jsonplaceholder.typicode.com/posts?userId=" + userId)
-            .then(response => response.json())
-            .then(json => handleResponse(json))
+        axios
+            .get('https://jsonplaceholder.typicode.com/posts/?userId=' + userId)
+            .then(response => { setUser(response.data) })
             .catch(e => console.log(e))
-    }
-
-    const handleResponse = (response: any[]) => {
-        var nameUser = response.map((item, index) => {
-            return {
-                id: item.id, title: item.title, body: item.body, userId: item.userId
-            }
-        })
-        setUser(response)
         setTimeout(function () { setLoading(false) }, 500);
-        console.log(nameUser);
-    }
-
+    }, [])
 
     if (loading)
         return <ActivityIndicator size={'large'} color={'red'} style={{ marginTop: 30 }} />
-
+    //        props.navigation.navigate('Comments', { userId: item.id })
     return (
         <ScrollView style={{ marginLeft: 10 }} >
-            {  user.map((item, index) => {
-                return (
-                    <View style={{ marginBottom: 30 }} key={index} >
-                        <TouchableOpacity onPress={() => { props.navigation.navigate('comments', { userId: item.id }) }}>
-                            <Text style={{ fontSize: 20 }}>"userId": {item.userId}</Text>
-                            <Text style={{ fontSize: 20 }}>"id": {item.id}</Text>
-                            <Text style={{ fontSize: 20 }}>"title": {item.title}</Text>
-                            <Text style={{ fontSize: 20 }}>"body": {item.body}</Text>
-                        </TouchableOpacity>
-                    </View>)
-            }
+            {  user.map((item, index) =>
+                <Postitem key={index} item={item} />
             )}
         </ScrollView>
     )
