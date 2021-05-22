@@ -14,11 +14,10 @@ import UserListScreen from "../screens/UserListScreen";
 import UserList from "../screens/UserList";
 import Posts from "../screens/Posts";
 import Albums from "../screens/Albums";
-import Comments from "../screens/Comments";
+import comments from "../screens/comments";
 import Photos from "../screens/Photos";
 import Todos from "../screens/Todos";
 import UserList1Screen from "../screens/UserList1Screen";
-import Postitem from '../screens/post/Postitem';
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
@@ -68,8 +67,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen name="Albums" component={Albums} options={{ headerTitle: 'albums' }} />
       <TabOneStack.Screen name="Photos" component={Photos} options={{ headerTitle: 'photos' }} />
       <TabOneStack.Screen name="Todos" component={Todos} options={{ headerTitle: 'todos' }} />
-      <TabOneStack.Screen name="Comments" component={Comments} options={{ headerTitle: 'comments' }} />
-      <TabOneStack.Screen name="Postitem" component={Postitem} options={{ headerTitle: 'postitem' }} />
+      <TabOneStack.Screen name="comments" component={comments} options={{ headerTitle: 'comments' }} />
     </TabOneStack.Navigator>
   );
 }

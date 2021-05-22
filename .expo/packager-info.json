@@ -1,10 +1,10 @@
 {
   "expoServerNgrokUrl": "https://pr-g34.anonymous.proje.exp.direct",
   "packagerNgrokUrl": "https://packager.pr-g34.anonymous.proje.exp.direct",
-  "ngrokPid": 14876,
+  "ngrokPid": 9576,
   "expoServerPort": 19000,
   "devToolsPort": 19002,
   "packagerPort": 19000,
   "packagerPid": null,
-  "webpackServerPort": 19006
+  "webpackServerPort": null
 }

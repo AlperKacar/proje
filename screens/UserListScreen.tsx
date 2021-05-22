@@ -44,7 +44,7 @@ const UserListScreen = (props: any) => {
                     list.map((item, index) => {
                         return (
                             <View style={{  borderBottomColor: 'black', borderBottomWidth: 0.5 }} key={index} >
-                                <Text style={{ fontSize: 25 , justifyContent: 'center', alignItems: 'center', flex:1}}>{item.name}</Text>
+                                <Text style={{ fontSize: 25 }}>{item.name}</Text>
                                 <View style={{ flexDirection: 'row'  }}>
                                     <TouchableOpacity onPress={() => { props.navigation.navigate('Posts', { userId:item.id}) }} style={{ marginTop: 20, borderRadius: 10, backgroundColor: 'lightblue', height: 40, justifyContent: 'center', alignItems: 'center', width: 90, marginRight: 10, marginLeft:25, marginBottom: 30 }}>
                                         <Text>Go To Post</Text>

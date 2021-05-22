@@ -7,7 +7,7 @@ const Todos = (props: any) => {
     const [loading, setLoading] = useState(true)
 
     React.useEffect(() => {
-        props.navigation.setOptions({ headerTitle: 'TODOS' })
+        props.navigation.setOptions({ headerTitle: 'TODO' })
     }, [])
     useEffect(() => {
         getuser()
